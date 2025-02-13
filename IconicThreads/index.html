@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Concert+One&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lilita+One&family=Permanent+Marker&family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&family=Stylish&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="icon" href="image/it.jpg"/>
+    <link rel="stylesheet" href="final.css" />
+  <title>Home</title>
+
+  <style>
+    @media screen and (max-width: 475px) {
+      .header__content h1{
+        font-size: 3.5rem;
+      }
+    }
+    @media screen and (max-width: 413px) {
+      .header__content h1{
+        font-size: 3rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <!-- loader start -->
+
+  <div class="spinner-wrapper">
+    <div class="spinner-border color" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+
+  <!-- loader end -->
+   
+
+  <!-- navbar start -->
+
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="#"><span class="logo_color">Iconic</span><span>Threads</span></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div id="menuToggle">
+        <input id="checkbox" type="checkbox">
+        <label class="toggle" for="checkbox">
+          <div class="bar bar--top"></div>
+          <div class="bar bar--middle"></div>
+          <div class="bar bar--bottom"></div>
+        </label>
+      </div>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto link_group">
+        <li class="nav-item active">
+          <a class="nav-link link_item" href="upcoming.html">Winter Sale</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link link_item" href="about.html">About Us</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link link_item" href="contact.html">Contact Us</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+<a href="#" class="icon-link mr-3" onclick="showSearchPopup(event)">
+    <i class="fa fa-search" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+  </a>
+  
+<a href="#" class="icon-link mr-3" onclick="showCartMessage(event)">
+    <i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+  </a>
+  
+        <a href="#" class="icon-link mr-3" onclick="showFilterPopup()">
+          <i class="fa fa-filter" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+        </a>
+        <button class="btn signup" type="submit"><a href="signup.html" class="signup-btn">Sign Up</a></button>
+      </form>
+    </div>
+  </nav>
+  
+<div id="searchPopup" class="popup-overlay" style="display: none;">
+    <div class="popup-content">
+      <span class="close-btn" onclick="hideSearchPopup()">&times;</span>
+      <h3>Search Items</h3>
+      <form id="searchForm" onsubmit="handleSearch(event)">
+        <input type="text" placeholder="Search for products..." class="search-input" id="searchInput" required>
+        <button type="submit" class="btn search-btn">Search</button>
+      </form>
+    </div>
+  </div>
+    
+
+
+  <div id="cartMessage" class="popup-overlay" style="display: none;">
+    <div class="popup-content">
+      <span class="close-btn" onclick="hideCartMessage()">×</span>
+      <h3>No items in your cart!</h3>
+      <p>Your cart is empty. Add some items to proceed.</p>
+    </div>
+  </div>
+  
+  
+  
+
+<div id="filterPopup" class="filter-popup">
+    <div class="filter-content">
+      <span class="close-btn" onclick="hideFilterPopup()">&times;</span>
+      <h3>Filter Options</h3>
+      <form>
+        <label><input type="checkbox" name="category" value="mens-wear"> Men's Wear</label><br>
+        <label><input type="checkbox" name="category" value="womens-wear"> Women's Wear</label><br>
+        <label><input type="checkbox" name="category" value="kids-wear"> Kids' Wear</label><br>
+        <label><input type="checkbox" name="category" value="kids-wear"> Size (S)</label><br>
+        <label><input type="checkbox" name="category" value="kids-wear"> Size (M)</label><br>
+        <label><input type="checkbox" name="category" value="kids-wear"> Size (L)</label><br>
+        <label><input type="checkbox" name="category" value="kids-wear"> Size (XL)</label><br>
+        <label><input type="checkbox" name="category" value="kids-wear"> Casual</label><br>
+        <label><input type="checkbox" name="category" value="kids-wear"> Formal</label><br>
+        <label><input type="checkbox" name="category" value="kids-wear"> Party Wear</label><br>
+        <label><input type="checkbox" name="category" value="kids-wear"> Sportswear</label><br>
+
+        <label for="price-range">Price Range:</label><br>
+        <input type="range" id="price-range" name="price-range" min="0" max="10000" step="500"><br>
+        <button type="submit" class="btn apply-btn">Apply Filters</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- navbar end -->
+
+
+
+
+  <!-- main heading/para start -->
+
+
+  <header class="section__container header__container">
+    <div class="header__image" data-aos="fade-left" data-aos-offset="200" data-aos-duration="1500">
+      <img src="image/model-removebg-preview.png" alt="header" />
+    </div>
+    <div class="header__content">
+      <h1 data-aos="fade-right" data-aos-offset="200" data-aos-duration="1500">TRANSFORMING <span>FASHION</span>
+        ONE CLICK AT A TIME</h1>
+      <p data-aos="fade-right" data-aos-offset="100" data-aos-duration="1500">
+        IconicThreads is revolutionizing the world of fashion e-commerce with cutting-edge design and innovation. Discover a seamless shopping experience, trendsetting styles, and personalized recommendations that empower brands and elevate your style game
+    </p>
+      <button class="btn build" type="submit" data-aos="fade-right" data-aos-offset="0" data-aos-duration="1500">Shop Now</button>
+      <button class="btn emply" type="submit" data-aos="fade-right" data-aos-offset="0"
+        data-aos-duration="1500"><a href="upcoming.html" class="emplya">Upcoming Offers</a></button>
+    </div>
+  </header>
+
+  <br><br>
+
+  <!-- main heading/para end -->
+
+
+<center>
+  <div class="banner">
+    <img class="banner_img" src="image/Banner1.png">
+    <img class="banner_img" src="image/Banner2.png">
+    <img class="banner_img" src="image/Banner3.png">
+    <img class="banner_img" src="image/Banner4.png">
+    <img class="banner_img" src="image/Banner5.png">
+</div>
+</center>
+
+<div class="cards" data-aos="fade-up" data-aos-offset="200" data-aos-duration="1500">
+  <div class="fashion-card">
+    <img src="https://manyavar.scene7.com/is/image/manyavar/IDES754V_310-Black_101.11283_30-08-2024-11-45:650x900" alt="Fashion Item" class="fashion-card-img">
+    <div class="fashion-card-content">
+      <h3 class="fashion-card-title">Black Sequins Velvet Indo Western</h3>
+      <p class="fashion-card-description">This Indo-Western has been made by our karigars (craftsmen) with lot of love and eye for detail.</p>
+      <div class="fashion-card-details">
+        <span class="fashion-card-price">₹ 19,999</span>
+        <div class="fashion-card-rating">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star-empty">☆</span>
+          <span class="rating-count">(95 reviews)</span>
+        </div>
+      </div>
+      <button class="fashion-card-btn">Add to Cart</button>
+    </div>
+  </div>
+  <div class="fashion-card">
+    <img src="https://manyavar.scene7.com/is/image/manyavar/SKT4824_402-CREAM_101.19485_28-05-2024-17-12:650x900" alt="Fashion Item" class="fashion-card-img">
+    <div class="fashion-card-content">
+      <h3 class="fashion-card-title">Cream Floral Sequinned Lehenga</h3>
+      <p class="fashion-card-description">This cream colored lehenga set is a bohemian dream.</p>
+      <div class="fashion-card-details">
+        <span class="fashion-card-price">₹ 14,999</span>
+        <div class="fashion-card-rating">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+
+          <span class="rating-count">(450 reviews)</span>
+        </div>
+      </div>
+      <button class="fashion-card-btn">Add to Cart</button>
+    </div>
+  </div>
+  <div class="fashion-card">
+    <img src="https://manyavar.scene7.com/is/image/manyavar/SB17128_422-WINE_101.16555_27-05-2024-13-57:650x900" alt="Fashion Item" class="fashion-card-img">
+    <div class="fashion-card-content">
+      <h3 class="fashion-card-title">Wine Floral Buta Patterned Saree</h3>
+      <p class="fashion-card-description">Indulge in elegance with the mesmerizing wine saree</p>
+      <div class="fashion-card-details">
+        <span class="fashion-card-price">₹ 4,999
+        </span>
+        <div class="fashion-card-rating">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star-empty">☆</span>
+          <span class="rating-count">(85 reviews)</span>
+        </div>
+      </div>
+      <button class="fashion-card-btn">Add to Cart</button>
+    </div>
+  </div>
+  <div class="fashion-card">
+    <img src="https://manyavar.scene7.com/is/image/manyavar/CTSD1258_306-Dark+Blue.6028_12-01-2024-12-47:650x900" alt="Fashion Item" class="fashion-card-img">
+    <div class="fashion-card-content">
+      <h3 class="fashion-card-title">Twilight Blue Jodhpuri Suit</h3>
+      <p class="fashion-card-description">With a bandhgala collar and delicate filigree buttons on the placket and sleeves</p>
+      <div class="fashion-card-details">
+        <span class="fashion-card-price">₹ 11,999
+        </span>
+        <div class="fashion-card-rating">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="rating-count">(835 reviews)</span>
+        </div>
+      </div>
+      <button class="fashion-card-btn">Add to Cart</button>
+    </div>
+  </div>
+</div>
+<div class="cards">
+  <div class="fashion-card">
+    <img src="https://imagescdn.allensolly.com/img/app/product/8/894070-10880725.jpg?auto=format&w=390" alt="Fashion Item" class="fashion-card-img">
+    <div class="fashion-card-content">
+      <h3 class="fashion-card-title">Men Navy Slim Fit Formal Blazer    </h3>
+      <p class="fashion-card-description">Upgrade your formal look with this navy slim-fit blazer</p>
+      <div class="fashion-card-details">
+        <span class="fashion-card-price">₹ 3,999</span>
+        <div class="fashion-card-rating">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star-empty">☆</span>
+          <span class="rating-count">(625 reviews)</span>
+        </div>
+      </div>
+      <button class="fashion-card-btn">Add to Cart</button>
+    </div>
+  </div>
+  <div class="fashion-card">
+    <img src="https://imagescdn.allensolly.com/img/app/product/8/869848-10342242.jpg?auto=format&w=390" alt="Fashion Item" class="fashion-card-img">
+    <div class="fashion-card-content">
+      <h3 class="fashion-card-title">Men Brown Solid Polo Neck T-shirt</h3>
+      <p class="fashion-card-description">This classic brown polo t-shirt </p>
+      <div class="fashion-card-details">
+        <span class="fashion-card-price">₹ 1,156</span>
+        <div class="fashion-card-rating">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star-empty">☆</span>
+          <span class="rating-count">(492 reviews)</span>
+        </div>
+      </div>
+      <button class="fashion-card-btn">Add to Cart</button>
+    </div>
+  </div>
+  <div class="fashion-card">
+    <img src="https://imagescdn.allensolly.com/img/app/product/3/39631701-13095345.jpg?auto=format&w=390" alt="Fashion Item" class="fashion-card-img">
+    <div class="fashion-card-content">
+      <h3 class="fashion-card-title">Women Black Party Dress    </h3>
+      <p class="fashion-card-description"> The round neck, three-quarter sleeve design gives a classic and stylish essence</p>
+      <div class="fashion-card-details">
+        <span class="fashion-card-price">₹ 2,149</span>
+        <div class="fashion-card-rating">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="rating-count">(827 reviews)</span>
+        </div>
+      </div>
+      <button class="fashion-card-btn">Add to Cart</button>
+    </div>
+  </div>
+  <div class="fashion-card">
+    <img src="https://imagescdn.allensolly.com/img/app/product/7/760015-8686510.jpg?auto=format&w=390" alt="Fashion Item" class="fashion-card-img">
+    <div class="fashion-card-content">
+      <h3 class="fashion-card-title">Women Solid Regular Fit Orange Jumpsuit    </h3>
+      <p class="fashion-card-description">Unleash your style with this captivating</p>
+      <div class="fashion-card-details">
+        <span class="fashion-card-price">₹ 1,649</span>
+        <div class="fashion-card-rating">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="rating-count">(256 reviews)</span>
+        </div>
+      </div>
+      <button class="fashion-card-btn">Add to Cart</button>
+    </div>
+  </div>
+</div>
+<!-- Card 3 -->
+<div class="cards">
+  <div class="fashion-card">
+    <img src="https://imagescdn.allensolly.com/img/app/product/9/945520-13162512.jpg?auto=format&w=390" alt="Fashion Item" class="fashion-card-img">
+    <div class="fashion-card-content">
+      <h3 class="fashion-card-title">Boys Navy Embroidered Fit Blazer
+    </h3>
+      <p class="fashion-card-description">Make your little gentleman steal the show</p>
+      <div class="fashion-card-details">
+        <span class="fashion-card-price">₹ 2,499</span>
+        <div class="fashion-card-rating">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star-empty">☆</span>
+          <span class="rating-count">(26 reviews)</span>
+        </div>
+      </div>
+      <button class="fashion-card-btn">Add to Cart</button>
+    </div>
+  </div>
+  <div class="fashion-card">
+    <img src="https://imagescdn.allensolly.com/img/app/product/9/901202-14032361.jpg?auto=format&w=390" alt="Fashion Item" class="fashion-card-img">
+    <div class="fashion-card-content">
+      <h3 class="fashion-card-title">Girls Pink Embellished Party Frock
+    </h3>
+      <p class="fashion-card-description">Looking for a dress that is perfectly pink, suited for your little girl</p>
+      <div class="fashion-card-details">
+        <span class="fashion-card-price">₹ 1,999</span>
+        <div class="fashion-card-rating">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star-empty">☆</span>
+          <span class="rating-count">(87 reviews)</span>
+        </div>
+      </div>
+      <button class="fashion-card-btn">Add to Cart</button>
+    </div>
+  </div>
+  <div class="fashion-card">
+    <img src="https://manyavar.scene7.com/is/image/manyavar/CPOSK719_333-Aqua+Green_101.10418_29-08-2024-15-40:650x900" alt="Fashion Item" class="fashion-card-img">
+    <div class="fashion-card-content">
+      <h3 class="fashion-card-title">Aqua Green Chikankari Buta Kurta Set
+    </h3>
+      <p class="fashion-card-description">Elevate your style with this aqua green kurta set</p>
+      <div class="fashion-card-details">
+        <span class="fashion-card-price">₹ 4,999
+        </span>
+        <div class="fashion-card-rating">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="rating-count">(82 reviews)</span>
+        </div>
+      </div>
+      <button class="fashion-card-btn">Add to Cart</button>
+    </div>
+  </div>
+  <div class="fashion-card">
+    <img src="https://manyavar.scene7.com/is/image/manyavar/CIWD745V-322+(5)_26-08-2024-18-51:650x900" alt="Fashion Item" class="fashion-card-img">
+    <div class="fashion-card-content">
+      <h3 class="fashion-card-title">Wine Velvet Indo Western Thread Embroidery</h3>
+      <p class="fashion-card-description">This Wine Velvet Boy's Indo-Western is a luxurious outfit</p>
+      <div class="fashion-card-details">
+        <span class="fashion-card-price">₹ 7,999
+        </span>
+        <div class="fashion-card-rating">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="rating-count">(873 reviews)</span>
+        </div>
+      </div>
+      <button class="fashion-card-btn">Add to Cart</button>
+    </div>
+  </div>
+</div>
+<div class="cards">
+  <div class="fashion-card">
+    <img src="https://manyavar.scene7.com/is/image/manyavar/NMSAS6580_403-DARK+CREAM_101.18168_28-05-2024-11-22:650x900" alt="Fashion Item" class="fashion-card-img">
+    <div class="fashion-card-content">
+      <h3 class="fashion-card-title">Cream Georgette Stitched Suit Stone Work</h3>
+      <p class="fashion-card-description">Experience the richness of our dark cream</p>
+      <div class="fashion-card-details">
+        <span class="fashion-card-price">₹ 8,999</span>
+        <div class="fashion-card-rating">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star-empty">☆</span>
+          <span class="rating-count">(62 reviews)</span>
+        </div>
+      </div>
+      <button class="fashion-card-btn">Add to Cart</button>
+    </div>
+  </div>
+  <div class="fashion-card">
+    <img src="https://imagescdn.allensolly.com/img/app/product/3/39619415-15311176.jpg?auto=format&w=390" alt="Fashion Item" class="fashion-card-img">
+    <div class="fashion-card-content">
+      <h3 class="fashion-card-title">Girls Blue Solid Regular Fit Dungarees    </h3>
+      <p class="fashion-card-description">Watch your little star steal the spotlight in these Blue dungarees</p>
+      <div class="fashion-card-details">
+        <span class="fashion-card-price">₹ 2,135</span>
+        <div class="fashion-card-rating">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star-empty">☆</span>
+          <span class="rating-count">(726 reviews)</span>
+        </div>
+      </div>
+      <button class="fashion-card-btn">Add to Cart</button>
+    </div>
+  </div>
+  <div class="fashion-card">
+    <img src="https://imagescdn.allensolly.com/img/app/product/3/39724852-15243915.jpg?auto=format&w=390" alt="Fashion Item" class="fashion-card-img">
+    <div class="fashion-card-content">
+      <h3 class="fashion-card-title">Women Maroon Solid Formal Dress
+    </h3>
+      <p class="fashion-card-description">Ace a smart look in this Maroon Solid dress</p>
+      <div class="fashion-card-details">
+        <span class="fashion-card-price">₹ 1,999</span>
+        <div class="fashion-card-rating">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="rating-count">(983 reviews)</span>
+        </div>
+      </div>
+      <button class="fashion-card-btn">Add to Cart</button>
+    </div>
+  </div>
+  <div class="fashion-card">
+    <img src="https://manyavar.scene7.com/is/image/manyavar/CDES972-307+(5)_26-08-2024-10-17:650x900" alt="Fashion Item" class="fashion-card-img">
+    <div class="fashion-card-content">
+      <h3 class="fashion-card-title">Boys Maroon Red Chikankari Kurta Set</h3>
+      <p class="fashion-card-description">Let your little one dazzle in this maroon red chikankari kurta set</p>
+      <div class="fashion-card-details">
+        <span class="fashion-card-price">₹ 2,499</span>
+        <div class="fashion-card-rating">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="rating-count">(528 reviews)</span>
+        </div>
+      </div>
+      <button class="fashion-card-btn">Add to Cart</button>
+    </div>
+  </div>
+</div>
+<div class="cards">
+  <div class="fashion-card">
+    <img src="https://manyavar.scene7.com/is/image/manyavar/Janhvi_Kapoor_Lehenga_High_res_20-09-2024-04-38:650x900" alt="Fashion Item" class="fashion-card-img">
+    <div class="fashion-card-content">
+      <h3 class="fashion-card-title">Radiant Red Mustard Bridal Bridal Lehenga</h3>
+      <p class="fashion-card-description">Designed for the new-age bride, this red and mustard bridal lehenga</p>
+      <div class="fashion-card-details">
+        <span class="fashion-card-price">₹ 39,999</span>
+        <div class="fashion-card-rating">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star-empty">☆</span>
+          <span class="rating-count">(87 reviews)</span>
+        </div>
+      </div>
+      <button class="fashion-card-btn">Add to Cart</button>
+    </div>
+  </div>
+  <div class="fashion-card">
+    <img src="https://manyavar.scene7.com/is/image/manyavar/NMSAS6626_410-BLACK_101.18334_28-05-2024-11-52:650x900" alt="Fashion Item" class="fashion-card-img">
+    <div class="fashion-card-content">
+      <h3 class="fashion-card-title">Carbon Black Patterned Stitched Suit    </h3>
+      <p class="fashion-card-description">Complemented by a bel buti pattern along the border for a refined touc    </p>
+      <div class="fashion-card-details">
+        <span class="fashion-card-price">₹ 7,999
+        </span>
+        <div class="fashion-card-rating">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star-empty">☆</span>
+          <span class="rating-count">(46 reviews)</span>
+        </div>
+      </div>
+      <button class="fashion-card-btn">Add to Cart</button>
+    </div>
+  </div>
+  <div class="fashion-card">
+    <img src="https://manyavar.scene7.com/is/image/manyavar/Manyavar1997_05-12-2022-06-54:650x900" alt="Fashion Item" class="fashion-card-img">
+    <div class="fashion-card-content">
+      <h3 class="fashion-card-title">Sapphire Blue Indo Western Set
+    </h3>
+      <p class="fashion-card-description">Exude a charm that's undeniably royal in this dark blue Indo-Western ensemble.</p>
+      <div class="fashion-card-details">
+        <span class="fashion-card-price">₹ 19,999
+        </span>
+        <div class="fashion-card-rating">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star-empty">☆</span>
+          <span class="rating-count">(i86 reviews)</span>
+        </div>
+      </div>
+      <button class="fashion-card-btn">Add to Cart</button>
+    </div>
+  </div>
+  <div class="fashion-card">
+    <img src="https://manyavar.scene7.com/is/image/manyavar/ODES1016_333-Aqua+Green_101.23602_30-05-2024-14-04:650x900" alt="Fashion Item" class="fashion-card-img">
+    <div class="fashion-card-content">
+      <h3 class="fashion-card-title">Aqua Green Floral Motif Sherwani Set    </h3>
+      <p class="fashion-card-description">This aqua green sherwani set features courtly floral motifs</p>
+      <div class="fashion-card-details">
+        <span class="fashion-card-price">₹ 19,999
+        </span>
+        <div class="fashion-card-rating">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star-empty">☆</span>
+          <span class="rating-count">(768 reviews)</span>
+        </div>
+      </div>
+      <button class="fashion-card-btn">Add to Cart</button>
+    </div>
+  </div>
+</div>
+<div class="cards">
+  <div class="fashion-card">
+    <img src="https://imagescdn.allensolly.com/img/app/product/3/39708165-14577798.jpg?auto=format&w=390" alt="Fashion Item" class="fashion-card-img">
+    <div class="fashion-card-content">
+      <h3 class="fashion-card-title">Men White Slim Fit Solid Casual Shirts
+    </h3>
+      <p class="fashion-card-description">Update your look with this White Solid Slim Fit shirt</p>
+      <div class="fashion-card-details">
+        <span class="fashion-card-price">₹ 1,399</span>
+        <div class="fashion-card-rating">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="rating-count">(356 reviews)</span>
+        </div>
+      </div>
+      <button class="fashion-card-btn">Add to Cart</button>
+    </div>
+  </div>
+  <div class="fashion-card">
+    <img src="https://manyavar.scene7.com/is/image/manyavar/SB16793_404-FAWN.22661_18-04-2024-15-56:650x900" alt="Fashion Item" class="fashion-card-img">
+    <div class="fashion-card-content">
+      <h3 class="fashion-card-title">Ravishing Fawn Organza Saree
+    </h3>
+      <p class="fashion-card-description">Elegance meets mystique in this radiant Fawn Organza Saree</p>
+      <div class="fashion-card-details">
+        <span class="fashion-card-price">₹ 11,999</span>
+        <div class="fashion-card-rating">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="rating-count">(898 reviews)</span>
+        </div>
+      </div>
+      <button class="fashion-card-btn">Add to Cart</button>
+    </div>
+  </div>
+  <div class="fashion-card">
+    <img src="https://manyavar.scene7.com/is/image/manyavar/SH0S287D_304-FAWN.13349_27-08-2023-21-55:650x900" alt="Fashion Item" class="fashion-card-img">
+    <div class="fashion-card-content">
+      <h3 class="fashion-card-title">Antique Gold Stone Work Sherwani Set</h3>
+      <p class="fashion-card-description">This sherwani set glimmers with the intricate lattice pattern</p>
+      <div class="fashion-card-details">
+        <span class="fashion-card-price">₹ 31,999
+        </span>
+        <div class="fashion-card-rating">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="rating-count">(765 reviews)</span>
+        </div>
+      </div>
+      <button class="fashion-card-btn">Add to Cart</button>
+    </div>
+  </div>
+  <div class="fashion-card">
+    <img src="https://imagescdn.allensolly.com/img/app/product/3/39727334-15117944.jpg?auto=format&w=390" alt="Fashion Item" class="fashion-card-img">
+    <div class="fashion-card-content">
+      <h3 class="fashion-card-title">Men Navy Slim Fit Solid Casual Shirts
+    </h3>
+      <p class="fashion-card-description">Update your look with this Navy Solid Slim Fit shirt</p>
+      <div class="fashion-card-details">
+        <span class="fashion-card-price">₹ 2,491</span>
+        <div class="fashion-card-rating">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="rating-count">(645 reviews)</span>
+        </div>
+      </div>
+      <button class="fashion-card-btn">Add to Cart</button>
+    </div>
+  </div>
+</div>
+<div class="cards">
+  <div class="fashion-card">
+    <img src="https://manyavar.scene7.com/is/image/manyavar/JOSK039_324-Yellow_101.9706_29-08-2024-13-38:650x900" alt="Fashion Item" class="fashion-card-img">
+    <div class="fashion-card-content">
+      <h3 class="fashion-card-title">Radiant Yellow Kurta Jacket Set</h3>
+      <p class="fashion-card-description">Experience tradition at its best with this radiant yellow Kurta Jacket Set</p>
+      <div class="fashion-card-details">
+        <span class="fashion-card-price">₹ 11,999</span>
+        <div class="fashion-card-rating">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star-empty">☆</span>
+          <span class="rating-count">(76 reviews)</span>
+        </div>
+      </div>
+      <button class="fashion-card-btn">Add to Cart</button>
+    </div>
+  </div>
+  <div class="fashion-card">
+    <img src="https://manyavar.scene7.com/is/image/manyavar/NMSKT0065_411-PISTA+GREEN_101.23509_16-09-2024-10-10:650x900" alt="Fashion Item" class="fashion-card-img">
+    <div class="fashion-card-content">
+      <h3 class="fashion-card-title">Pista Green Floral Top Lehenga with Peacock</h3>
+      <p class="fashion-card-description">Step into elegance with our pista green floral buta crop top lehenga</p>
+      <div class="fashion-card-details">
+        <span class="fashion-card-price">₹ 17,999
+        </span>
+        <div class="fashion-card-rating">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star-empty">☆</span>
+          <span class="rating-count">(87 reviews)</span>
+        </div>
+      </div>
+      <button class="fashion-card-btn">Add to Cart</button>
+    </div>
+  </div>
+  <div class="fashion-card">
+    <img src="https://manyavar.scene7.com/is/image/manyavar/JK-blue+(1)_19-11-2024-05-45:650x900" alt="Fashion Item" class="fashion-card-img">
+    <div class="fashion-card-content">
+      <h3 class="fashion-card-title">Ethereal Blue Net Lehenga
+    </h3>
+      <p class="fashion-card-description">Step into the spotlight with this exquisite blue bridal lehenga</p>
+      <div class="fashion-card-details">
+        <span class="fashion-card-price">₹ 29,999
+        </span>
+        <div class="fashion-card-rating">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star-empty">☆</span>
+          <span class="rating-count">(56 reviews)</span>
+        </div>
+      </div>
+      <button class="fashion-card-btn">Add to Cart</button>
+    </div>
+  </div>
+  <div class="fashion-card">
+    <img src="https://manyavar.scene7.com/is/image/manyavar/SOSK466A-302-CREAM.37346_17-11-2023-18-27:650x900" alt="Fashion Item" class="fashion-card-img">
+    <div class="fashion-card-content">
+      <h3 class="fashion-card-title">Ivory White Zari South Indian Pancha Set</h3>
+      <p class="fashion-card-description">This ivory white pancha set embraces the traditional Panchakacham</p>
+      <div class="fashion-card-details">
+        <span class="fashion-card-price">₹ 8,999
+        </span>
+        <div class="fashion-card-rating">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star-empty">☆</span>
+          <span class="rating-count">(45 reviews)</span>
+        </div>
+      </div>
+      <button class="fashion-card-btn">Add to Cart</button>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+<br><br><br>
+
+<center><button class="fashion-card-btn"><a href="load.html" style="color: #ffffff; text-decoration-line: none;">Load More</a></button></center>
+
+<br><br><br>
+
+  <!-- footer start -->
+
+  <section class="footer">
+    <div class="social">
+      <a href="#">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="#">
+        <i class="fab fa-snapchat"></i>
+      </a>
+      <a href="#">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="#">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+    </div>
+    <ul class="list">
+      <li>
+        <a href="#">Home</a>
+      </li>
+      <li>
+        <a href="#">Winter Sale</a>
+      </li>
+      <li>
+        <a href="#">About Us</a>
+      </li>
+      <li>
+        <a href="#">COntact Us</a>
+      </li>
+      <li>
+        <a href="#">Sign Up</a>
+      </li>
+    </ul>
+    <p class="copyright">@ 2024 IconicThreads. All Rights Reserved. Created by Krish Patidar & Team (AITR)</p>
+  </section>
+
+  <!-- footer end -->
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+    crossorigin="anonymous"></script>
+
+  <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+
+  
+  <script src="assets/js/jquery-3.2.1.min.js"></script>
+  <script src="assets/js/jquery-migrate-3.0.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+  crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+  integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+  crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+
+
+
+  
+  <script>
+    AOS.init();
+  </script>
+
+  <script src="main.js"></script>
+  
+  <script>
+    function showFilterPopup() {
+  document.getElementById('filterPopup').style.display = 'block';
+}
+
+function hideFilterPopup() {
+  document.getElementById('filterPopup').style.display = 'none';
+}
+
+function showSearchPopup(event) {
+  event.preventDefault(); 
+  document.getElementById('searchPopup').style.display = 'flex';
+}
+
+function hideSearchPopup() {
+  document.getElementById('searchPopup').style.display = 'none';
+}
+
+function showCartMessage(event) {
+  event.preventDefault(); 
+  document.getElementById('cartMessage').style.display = 'flex';
+}
+
+function hideCartMessage() {
+  document.getElementById('cartMessage').style.display = 'none';
+}
+
+function showSearchPopup(event) {
+  event.preventDefault(); 
+  document.getElementById('searchPopup').style.display = 'flex';
+}
+
+function hideSearchPopup() {
+  document.getElementById('searchPopup').style.display = 'none';
+}
+
+function handleSearch(event) {
+  event.preventDefault(); 
+
+  const searchQuery = document.getElementById('searchInput').value;
+
+  window.location.href = "final.html?search=" + encodeURIComponent(searchQuery);
+
+}
+
+function showCartMessage(event) {
+  event.preventDefault(); 
+
+  document.getElementById('cartMessage').style.display = 'flex';
+}
+
+function hideCartMessage() {
+  document.getElementById('cartMessage').style.display = 'none';
+}
+
+
+
+
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const prevButton = document.getElementById('prev-slide');
+      const nextButton = document.getElementById('next-slide');
+      const imageList = document.querySelector('.image-list');
+      const imageItemWidth = document.querySelector('.image-item').clientWidth;
+      const gap = parseInt(window.getComputedStyle(imageList).gridGap);
+      const totalScrollWidth = imageList.scrollWidth;
+      let scrollPosition = 0;
+
+      function updateButtons() {
+        prevButton.style.display = scrollPosition > 0 ? 'block' : 'none';
+        nextButton.style.display = (scrollPosition + imageList.clientWidth) < totalScrollWidth ? 'block' : 'none';
+      }
+
+      nextButton.addEventListener('click', function () {
+        scrollPosition = Math.min(scrollPosition + imageItemWidth + gap, totalScrollWidth - imageList.clientWidth);
+        imageList.scrollTo({
+          left: scrollPosition,
+          behavior: 'smooth'
+        });
+        updateButtons();
+      });
+
+      prevButton.addEventListener('click', function () {
+        scrollPosition = Math.max(scrollPosition - imageItemWidth - gap, 0);
+        imageList.scrollTo({
+          left: scrollPosition,
+          behavior: 'smooth'
+        });
+        updateButtons();
+      });
+
+
+      updateButtons();
+    });
+  </script>
+
+
+</body>
+
+</html>

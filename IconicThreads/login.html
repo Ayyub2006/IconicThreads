@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Concert+One&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lilita+One&family=Permanent+Marker&family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&family=Stylish&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="final.css" />
+  <title>Sign Up</title>
+</head>
+
+
+  <!-- navbar start -->
+
+<nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="index.html"><span class="logo_color">Iconic</span><span>Threads</span></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div id="menuToggle">
+        <input id="checkbox" type="checkbox">
+        <label class="toggle" for="checkbox">
+          <div class="bar bar--top"></div>
+          <div class="bar bar--middle"></div>
+          <div class="bar bar--bottom"></div>
+        </label>
+      </div>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto link_group">
+        <li class="nav-item active">
+          <a class="nav-link link_item" href="upcoming.html">Winter Sale</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link link_item" href="about.html">About Us</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link link_item" href="contact.html">Contact Us</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+<a href="#" class="icon-link mr-3" onclick="showSearchPopup(event)">
+    <i class="fa fa-search" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+  </a>
+  
+<a href="#" class="icon-link mr-3" onclick="showCartMessage(event)">
+    <i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+  </a>
+  
+
+        <a href="#" class="icon-link mr-3" onclick="showFilterPopup()">
+          <i class="fa fa-filter" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+        </a>
+        <button class="btn signup" type="submit"><a href="signup.html" class="signup-btn">Sign Up</a></button>
+      </form>
+    </div>
+  </nav>
+  
+<div id="searchPopup" class="popup-overlay" style="display: none;">
+    <div class="popup-content">
+      <span class="close-btn" onclick="hideSearchPopup()">&times;</span>
+      <h3>Search Items</h3>
+      <form id="searchForm" onsubmit="handleSearch(event)">
+        <input type="text" placeholder="Search for products..." class="search-input" id="searchInput" required>
+        <button type="submit" class="btn search-btn">Search</button>
+      </form>
+    </div>
+  </div>
+    
+
+
+  <div id="cartMessage" class="popup-overlay" style="display: none;">
+    <div class="popup-content">
+      <span class="close-btn" onclick="hideCartMessage()">×</span>
+      <h3>No items in your cart!</h3>
+      <p>Your cart is empty. Add some items to proceed.</p>
+    </div>
+  </div>
+  
+  
+  
+  
+<div id="filterPopup" class="filter-popup">
+    <div class="filter-content">
+      <span class="close-btn" onclick="hideFilterPopup()">&times;</span>
+      <h3>Filter Options</h3>
+      <form>
+        <label><input type="checkbox" name="category" value="mens-wear"> Men's Wear</label><br>
+        <label><input type="checkbox" name="category" value="womens-wear"> Women's Wear</label><br>
+        <label><input type="checkbox" name="category" value="kids-wear"> Kids' Wear</label><br>
+        <label><input type="checkbox" name="category" value="kids-wear"> Size (S)</label><br>
+        <label><input type="checkbox" name="category" value="kids-wear"> Size (M)</label><br>
+        <label><input type="checkbox" name="category" value="kids-wear"> Size (L)</label><br>
+        <label><input type="checkbox" name="category" value="kids-wear"> Size (XL)</label><br>
+        <label><input type="checkbox" name="category" value="kids-wear"> Casual</label><br>
+        <label><input type="checkbox" name="category" value="kids-wear"> Formal</label><br>
+        <label><input type="checkbox" name="category" value="kids-wear"> Party Wear</label><br>
+        <label><input type="checkbox" name="category" value="kids-wear"> Sportswear</label><br>
+
+        <label for="price-range">Price Range:</label><br>
+        <input type="range" id="price-range" name="price-range" min="0" max="10000" step="500"><br>
+        <button type="submit" class="btn apply-btn">Apply Filters</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- navbar end -->
+
+
+  <br><br>
+  
+  <center>
+
+    
+  <div class="form-container">
+       <p class="title">Welcome</p>
+       <form class="form">
+        <input type="text" class="input" placeholder="Name">
+        <input type="email" class="input" placeholder="Email">
+         <input type="number" class="input" placeholder="Phone Number">
+         <input type="password" class="input" placeholder="Password">
+         <button class="form-btn">Sign Up</button>
+       </form>
+       <p class="sign-up-label">
+         Already have an account?<span class="sign-up-link"><a href="signup.html">Log In</a></span>
+       </p>
+    
+       
+         </div>
+       </div>
+     </div>
+
+    </center>
+
+  <br><br><br>
+  <br><br><br><br><br><br>
+
+
+
+
+ <!-- footer start -->
+
+ <section class="footer">
+  <div class="social">
+    <a href="#">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="#">
+      <i class="fab fa-snapchat"></i>
+    </a>
+    <a href="#">
+      <i class="fab fa-twitter"></i>
+    </a>
+    <a href="#">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+  </div>
+  <ul class="list">
+    <li>
+      <a href="#">Home</a>
+    </li>
+    <li>
+      <a href="#">Winter Sale</a>
+    </li>
+    <li>
+      <a href="#">About Us</a>
+    </li>
+    <li>
+      <a href="#">COntact Us</a>
+    </li>
+    <li>
+      <a href="#">Sign Up</a>
+    </li>
+  </ul>
+  <p class="copyright">@ 2024 IconicThreads. All Rights Reserved. Created by Krish Patidar & Team (AITR)</p>
+</section>
+
+<!-- footer end -->
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+    crossorigin="anonymous"></script>
+
+  <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+
+  <script src="main.js"></script>
+  <script>
+    function showFilterPopup() {
+  document.getElementById('filterPopup').style.display = 'block';
+}
+
+function hideFilterPopup() {
+  document.getElementById('filterPopup').style.display = 'none';
+}
+
+function showSearchPopup(event) {
+  event.preventDefault(); 
+  document.getElementById('searchPopup').style.display = 'flex';
+}
+
+function hideSearchPopup() {
+  document.getElementById('searchPopup').style.display = 'none';
+}
+
+function showCartMessage(event) {
+  event.preventDefault(); 
+  document.getElementById('cartMessage').style.display = 'flex';
+}
+
+function hideCartMessage() {
+  document.getElementById('cartMessage').style.display = 'none';
+}
+
+function showSearchPopup(event) {
+  event.preventDefault();
+  document.getElementById('searchPopup').style.display = 'flex';
+}
+
+function hideSearchPopup() {
+  document.getElementById('searchPopup').style.display = 'none';
+}
+
+function handleSearch(event) {
+  event.preventDefault(); 
+
+  
+  const searchQuery = document.getElementById('searchInput').value;
+
+  window.location.href = "final.html?search=" + encodeURIComponent(searchQuery);
+}
+
+function showCartMessage(event) {
+  event.preventDefault(); 
+
+  document.getElementById('cartMessage').style.display = 'flex';
+}
+
+function hideCartMessage() {
+  document.getElementById('cartMessage').style.display = 'none';
+}
+
+
+
+
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const prevButton = document.getElementById('prev-slide');
+      const nextButton = document.getElementById('next-slide');
+      const imageList = document.querySelector('.image-list');
+      const imageItemWidth = document.querySelector('.image-item').clientWidth;
+      const gap = parseInt(window.getComputedStyle(imageList).gridGap);
+      const totalScrollWidth = imageList.scrollWidth;
+      let scrollPosition = 0;
+
+      function updateButtons() {
+        prevButton.style.display = scrollPosition > 0 ? 'block' : 'none';
+        nextButton.style.display = (scrollPosition + imageList.clientWidth) < totalScrollWidth ? 'block' : 'none';
+      }
+
+      nextButton.addEventListener('click', function () {
+        scrollPosition = Math.min(scrollPosition + imageItemWidth + gap, totalScrollWidth - imageList.clientWidth);
+        imageList.scrollTo({
+          left: scrollPosition,
+          behavior: 'smooth'
+        });
+        updateButtons();
+      });
+
+      prevButton.addEventListener('click', function () {
+        scrollPosition = Math.max(scrollPosition - imageItemWidth - gap, 0);
+        imageList.scrollTo({
+          left: scrollPosition,
+          behavior: 'smooth'
+        });
+        updateButtons();
+      });
+
+
+      updateButtons();
+    });
+  </script>
+
+</body>
+
+</html>
